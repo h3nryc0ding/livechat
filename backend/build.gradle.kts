@@ -69,8 +69,8 @@ tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
     language = "kotlin"
 }
 
-configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
-    version = "1.0.0"
+ktlint {
+    version = "1.5.0"
     filter {
         include("**/src/**/*.kt", "**.kts")
         exclude("**/build/**/*.kt", "**/generated/**/*.kt")

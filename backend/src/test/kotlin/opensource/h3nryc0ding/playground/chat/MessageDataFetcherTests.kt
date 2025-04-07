@@ -30,7 +30,8 @@ class MessageDataFetcherTests {
 
         val result = messageDataFetcher.messages()
 
-        StepVerifier.create(result)
+        StepVerifier
+            .create(result)
             .expectNextMatches { it.text == message.text && it.creator == message.creator }
             .verifyComplete()
 
@@ -45,7 +46,8 @@ class MessageDataFetcherTests {
 
         val result = messageDataFetcher.messageSent()
 
-        StepVerifier.create(result)
+        StepVerifier
+            .create(result)
             .then { messageDataFetcher.messageSend(messageInput).subscribe() }
             .expectNextMatches { it.text == messageInput.text && it.creator == messageInput.creator }
             .thenCancel()
@@ -73,7 +75,8 @@ class MessageDataFetcherTests {
 
         val result = messageDataFetcher.messageSend(messageInput)
 
-        StepVerifier.create(result)
+        StepVerifier
+            .create(result)
             .expectNextMatches { it.text == message.text && it.creator == message.creator }
             .verifyComplete()
     }

@@ -14,8 +14,9 @@ import opensource.h3nryc0ding.livechat.generated.types.User as UserDTO
 class UserDataFetcher {
     @DgsData(parentType = "Query", field = "user")
     @PreAuthorize("isAuthenticated()")
-    fun user(): Mono<UserDTO> {
-        return ReactiveSecurityContextHolder.getContext()
+    fun user(): Mono<UserDTO> =
+        ReactiveSecurityContextHolder
+            .getContext()
             .map { it.authentication.principal }
             .filter { it is DefaultOidcUser }
             .cast(DefaultOidcUser::class.java)
@@ -28,5 +29,4 @@ class UserDataFetcher {
                     emailVerified = { it.emailVerified },
                 )
             }
-    }
 }

@@ -44,9 +44,7 @@ class MessageDataFetcher(
     private val sink = Sinks.many().multicast().directBestEffort<MessageDTO>()
 
     @DgsQuery
-    fun messages(): Flux<MessageDTO> {
-        return messageRepository.findAll().map { it.toDTO() }
-    }
+    fun messages(): Flux<MessageDTO> = messageRepository.findAll().map { it.toDTO() }
 
     @DgsMutation
     fun messageSend(
@@ -63,7 +61,5 @@ class MessageDataFetcher(
     }
 
     @DgsSubscription
-    fun messageSent(): Flux<MessageDTO> {
-        return sink.asFlux()
-    }
+    fun messageSent(): Flux<MessageDTO> = sink.asFlux()
 }

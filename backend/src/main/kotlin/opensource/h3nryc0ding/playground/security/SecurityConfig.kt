@@ -28,8 +28,8 @@ class SecurityConfig(
     }
 
     @Bean
-    fun securityFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
-        return http {
+    fun securityFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain =
+        http {
             httpBasic { disable() }
             formLogin { disable() }
             csrf { disable() }
@@ -55,7 +55,6 @@ class SecurityConfig(
                     }
             }
         }
-    }
 
     @Bean
     fun webSessionIdResolver(): WebSessionIdResolver {
