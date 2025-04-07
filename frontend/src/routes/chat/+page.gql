@@ -1,0 +1,8 @@
+query AllMessage {
+	messages @list(name: "All_Message") {
+		id
+		text
+		creator
+		timestamp
+	}
+}
