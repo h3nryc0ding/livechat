@@ -21,8 +21,8 @@ importers:
         specifier: ^0.487.0
         version: 0.487.0(svelte@4.2.19)
       mode-watcher:
-        specifier: ^0.3.0
-        version: 0.3.0(svelte@4.2.19)
+        specifier: ^0.5.1
+        version: 0.5.1(svelte@4.2.19)
       tailwind-merge:
         specifier: ^2.2.0
         version: 2.2.1
@@ -2002,10 +2002,10 @@ packages:
   mlly@1.6.1:
     resolution: {integrity: sha512-vLgaHvaeunuOXHSmEbZ9izxPx3USsk8KCQ8iC+aTlp5sKRSoZvwhHh5L9VbKSaVC6sJDqbyohIS76E2VmHIPAA==}
 
-  mode-watcher@0.3.0:
-    resolution: {integrity: sha512-k8jjuTx94HaaRKWO6JDf8wL761hFatrTIHJKl+E+3JWcnv+GnMBH062zcLsy0lbCI3n7RZxxHaWi66auFnUO4g==}
+  mode-watcher@0.5.1:
+    resolution: {integrity: sha512-adEC6T7TMX/kzQlaO/MtiQOSFekZfQu4MC+lXyoceQG+U5sKpJWZ4yKXqw846ExIuWJgedkOIPqAYYRk/xHm+w==}
     peerDependencies:
-      svelte: ^4.0.0
+      svelte: ^4.0.0 || ^5.0.0-next.1
 
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -4816,7 +4816,7 @@ snapshots:
       pkg-types: 1.0.3
       ufo: 1.4.0
 
-  mode-watcher@0.3.0(svelte@4.2.19):
+  mode-watcher@0.5.1(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
 
