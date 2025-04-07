@@ -18,8 +18,8 @@ importers:
         specifier: ^5.16.0
         version: 5.16.0(graphql@15.10.1)
       lucide-svelte:
-        specifier: ^0.363.0
-        version: 0.363.0(svelte@4.2.19)
+        specifier: ^0.487.0
+        version: 0.487.0(svelte@4.2.19)
       mode-watcher:
         specifier: ^0.3.0
         version: 0.3.0(svelte@4.2.19)
@@ -1923,8 +1923,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  lucide-svelte@0.363.0:
-    resolution: {integrity: sha512-zpUBFtMEEOOjILgiDX48ijibUww3JUCLrMo5YDGX/De/m6I+vn+oWIGvdyZtuc8nz/P8xHW9vWLKzIWeMrRYbA==}
+  lucide-svelte@0.487.0:
+    resolution: {integrity: sha512-ags7npK5Nv6AI9LBpAbijpmHxcO9hOeP0/7yJ72++AOBWmwB0X7LqNQFJk1PBe4wM0UsgklWQdyRZyx8s9xyXg==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -4743,7 +4743,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  lucide-svelte@0.363.0(svelte@4.2.19):
+  lucide-svelte@0.487.0(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
 
