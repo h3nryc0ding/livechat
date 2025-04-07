@@ -1,4 +1,4 @@
-FROM node:22-alpine@sha256:9bef0ef1e268f60627da9ba7d7605e8831d5b56ad07487d24d1aa386336d1944 AS build
+FROM node:23-alpine@sha256:86703151a18fcd06258e013073508c4afea8e19cd7ed451554221dd00aea83fc AS build
 
 RUN corepack enable
 COPY package.json pnpm-lock.yaml ./
@@ -7,7 +7,7 @@ COPY . .
 RUN pnpm run build && \
     pnpm prune --prod
 
-FROM node:22-alpine@sha256:9bef0ef1e268f60627da9ba7d7605e8831d5b56ad07487d24d1aa386336d1944
+FROM node:23-alpine@sha256:86703151a18fcd06258e013073508c4afea8e19cd7ed451554221dd00aea83fc
 COPY --from=build node_modules/ node_modules
 COPY --from=build build/ build
 
