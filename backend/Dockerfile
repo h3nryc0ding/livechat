@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21.0.6_7-jre-alpine-3.21@sha256:4e9ab608d97796571b1d5bbcd1c9f430a89a5f03fe5aa6c093888ceb6756c502 AS build
+FROM gradle:8-jdk21-alpine@sha256:3dd41aff1bf0421db1a094dbedd79ea18a55ec47e4b26f5d73625c7d0c88aa17 AS build
 
 COPY gradle gradle
 COPY gradlew build.gradle.kts settings.gradle.kts ./
@@ -7,7 +7,7 @@ COPY src src
 RUN ./gradlew bootJar --no-daemon
 
 FROM eclipse-temurin:21.0.6_7-jre-alpine-3.21@sha256:4e9ab608d97796571b1d5bbcd1c9f430a89a5f03fe5aa6c093888ceb6756c502
-COPY --from=build /build/libs/*.jar livechat.jar
+COPY --from=build /home/gradle/build/libs/*.jar livechat.jar
 
 EXPOSE 8080
 ENV SPRING_PROFILES_ACTIVE=production
