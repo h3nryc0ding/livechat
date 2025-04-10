@@ -1,8 +1,12 @@
 services:
   mongo:
     image: mongo:8.0.6-noble@sha256:1697f35db2404e7ca87650fee7e5aab4188d2c2f3f0adbe211d060ec9b5799e8
-    volumes:
-      - mongo_data:/data/db
+    environment:
+      - 'MONGO_INITDB_DATABASE=livechat'
+      - 'MONGO_INITDB_ROOT_PASSWORD=secret'
+      - 'MONGO_INITDB_ROOT_USERNAME=root'
+    ports:
+      - '27017'
   keycloak:
     image: keycloak/keycloak:26.1.4@sha256:044a457e04987e1fff756be3d2fa325a4ef420fa356b7034ecc9f1b693c32761
     ports:
@@ -19,6 +23,3 @@ services:
     environment:
       - KC_BOOTSTRAP_ADMIN_USERNAME=admin
       - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
-
-volumes:
-  mongo_data:
