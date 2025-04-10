@@ -1,21 +1,27 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    id("org.springframework.boot") version "3.4.4"
-    id("io.spring.dependency-management") version "1.1.7"
     kotlin("jvm") version "2.1.20"
     kotlin("plugin.spring") version "2.1.20"
-
+	
+    id("org.springframework.boot") version "3.4.4"
+    id("io.spring.dependency-management") version "1.1.7"
+	
     id("com.netflix.dgs.codegen") version "7.0.3"
-
     id("org.jlleitschuh.gradle.ktlint") version "12.2.0"
 }
 
-group = "com.example"
+group = "opensource.h3nryc0ding"
 version = "0.0.1-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll("-Xjsr305=strict")
+    }
 }
 
 repositories {
@@ -24,36 +30,33 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:8.6.0")
+        mavenBom("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:10.0.4")
     }
 }
 
 dependencies {
-    // Spring
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-    // Kotlin
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
+
+    implementation("com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter")
+    testImplementation("com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter-test")
+
+    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    testImplementation("io.projectreactor:reactor-test")
+	
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    // Testing
-    testImplementation("io.projectreactor:reactor-test")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-
-    // Misc
-    implementation("com.netflix.graphql.dgs:graphql-dgs-webflux-starter")
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
-    }
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {
@@ -61,12 +64,11 @@ tasks.withType<Test> {
     systemProperty("spring.profiles.active", "test")
 }
 
-tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
+tasks.generateJava {
+    packageName = "opensource.h3nryc0ding.livechat.generated"
     generateClient = true
     generateKotlinClosureProjections = true
     generateKotlinNullableClasses = true
-    packageName = "opensource.h3nryc0ding.livechat.generated"
-    language = "kotlin"
 }
 
 ktlint {
