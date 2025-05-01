@@ -6,7 +6,7 @@ RUN ./gradlew dependencies --no-daemon
 COPY src src
 RUN ./gradlew bootJar --no-daemon
 
-FROM eclipse-temurin:21.0.6_7-jre-alpine-3.21@sha256:4e9ab608d97796571b1d5bbcd1c9f430a89a5f03fe5aa6c093888ceb6756c502
+FROM eclipse-temurin:23-jre-alpine-3.21@sha256:88593498863c64b43be16e8357a3c70ea475fc20a93bf1e07f4609213a357c87
 COPY --from=build /home/gradle/build/libs/*.jar livechat.jar
 
 EXPOSE 8080
