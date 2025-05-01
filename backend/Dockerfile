@@ -1,4 +1,4 @@
-FROM gradle:8-jdk21-alpine@sha256:3dd41aff1bf0421db1a094dbedd79ea18a55ec47e4b26f5d73625c7d0c88aa17 AS build
+FROM gradle:8-jdk21-alpine@sha256:98fe25d8c7cc859c48f1e76165e2def2436b66bd5b37935aa9895cb4807d802d AS build
 
 COPY gradle gradle
 COPY gradlew build.gradle.kts settings.gradle.kts ./
