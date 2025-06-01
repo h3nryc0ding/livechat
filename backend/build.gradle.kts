@@ -5,7 +5,7 @@ plugins {
     id("org.springframework.boot") version "3.4.4"
     id("io.spring.dependency-management") version "1.1.7"
 	
-    id("com.netflix.dgs.codegen") version "7.0.3"
+    id("com.netflix.dgs.codegen") version "8.0.4"
     id("org.jlleitschuh.gradle.ktlint") version "12.2.0"
 }
 
